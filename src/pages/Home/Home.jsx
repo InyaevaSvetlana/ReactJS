@@ -1,17 +1,20 @@
 import React from 'react';
-//import ReactDom from 'react-dom';
-
+// import ReactDom from 'react-dom';
 import MessageList from '@containers/MessageList';
-import ChatsList from '@containers/ChatsList';
+import ChatList from '@containers/ChatList';
 import MsgInput from '@components/MsgInput';
+import { StylesProvider } from '@material-ui/core/styles';
 
-import './style.scss'
+import './style.scss';
 
-export default () => {
+export default props => {
 
-    return <div>
-        { /*<MsgInput />*/ }
-        <MessageList />
-        <ChatsList />
-    </div>;
+    return <StylesProvider>
+        <h1>Chat with { props.name }</h1>
+                <div className="app__wrapper">
+                    {/* <MsgInput /> */}
+                    <ChatList />
+                    <MessageList />
+                </div>
+            </StylesProvider>;
 }
