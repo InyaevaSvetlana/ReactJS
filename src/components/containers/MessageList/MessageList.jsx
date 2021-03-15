@@ -9,7 +9,7 @@ import Message from '@components/Message';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { loadMessages } from '@actions/messages';
+import { loadMessages, sendMessage } from '@actions/messages';
 
 class MessageList extends Component {
     constructor (props) {
@@ -28,22 +28,19 @@ class MessageList extends Component {
     };
 
     sendMessage = () => {
+        this.props.send('Username', this.state.text);
+        
         this.setState({
-            text: '',
-            messages: [...this.state.messages, 
-            {
-                name: 'User',
-                text: this.state.text
-            }]
+            text: ''
         });
     };
 
-    componentDidUpdate() {
-        // console.log('Отправлено');
+    async componentDidMount() {
+        console.log(this.props);
+        await this.props.loadMessages(this.props.user.user.id, this.props.activeChat);
     };
 
     render() {
-        console.log(this.props.load());
         const { messages } = this.props;
         const Messages = messages.map((el, i) => 
             <Message 
@@ -70,10 +67,12 @@ class MessageList extends Component {
     };
 };
 
-const mapState = ({ messagesReducer }) => ({
-    messages: messagesReducer.messages
+const mapState = ({ messagesReducer, userReducer, chatsReducer }) => ({
+    messages: messagesReducer.messages,
+    user: userReducer,
+    activeChat: chatsReducer.activeChat
 });
 
-const mapActions = dispatch => bindActionCreators({ load: loadMessages }, dispatch);
+const mapActions = dispatch => bindActionCreators({ send: sendMessage, loadMessages }, dispatch);
 
 export default connect(mapState, mapActions)(MessageList);

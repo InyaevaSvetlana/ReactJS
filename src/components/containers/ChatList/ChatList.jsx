@@ -2,11 +2,11 @@ import './style.css';
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import ChatsDialog from '@components/ChatsDialog';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-export default class ChatList extends Component {
+import { loadChats } from '@actions/chats';
+class ChatList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,9 +23,14 @@ export default class ChatList extends Component {
         this.setState({ activeChats: [...this.state.activeChats, { name, id: Date.now() }] });
     }
 
+    componentDidMount() {
+        // this.props.loadChats('userName');
+    }
+
     render() {
-        const { activeChats } = this.state;
-        const Chats = activeChats.map((el, i) => <li key={ i } className="chatlist-list__item">
+        // const { activeChats } = this.state;
+        const { chats } = this.props;
+        const Chats = chats.map((el, i) => <li key={ i } className="chatlist-list__item">
             <Link to = {`/chat/${el.id}`} >{ el.name }</Link>
         </li>);
 
@@ -36,7 +41,7 @@ export default class ChatList extends Component {
                         { Chats }
                     </ul>
                 </div>
-                 
+                    
 
                 <div>
                     <ChatsDialog add={ this.addChat } />
@@ -48,3 +53,11 @@ export default class ChatList extends Component {
         )
     }
 }
+
+const mapState = ({ chatsReducer }) => ({
+    chats: chatsReducer.chats
+});
+
+const mapActions = dispatch => bindActionCreators({ loadChats }, dispatch);
+
+export default connect(mapState, mapActions)(ChatList);
