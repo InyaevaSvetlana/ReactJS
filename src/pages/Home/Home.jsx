@@ -1,17 +1,47 @@
-import React from 'react';
-//import ReactDom from 'react-dom';
-
+import React, { Component } from 'react';
+// import ReactDom from 'react-dom';
 import MessageList from '@containers/MessageList';
-import ChatsList from '@containers/ChatsList';
+import ChatList from '@containers/ChatList';
 import MsgInput from '@components/MsgInput';
+import { StylesProvider } from '@material-ui/core/styles';
 
-import './style.scss'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default () => {
+import { loadUser } from '@actions/user';
+import { loadChats } from '@actions/chats';
+import { loadContacts } from '@actions/contacts';
+import { loadMessages } from '@actions/messages';
+import { getActiveChat } from '@actions/chats';
 
-    return <div>
-        { /*<MsgInput />*/ }
-        <MessageList />
-        <ChatsList />
-    </div>;
+import './style.scss';
+
+class Home extends Component {
+    async componentDidMount() {
+        await this.props.loadUser();
+        await this.props.loadChats(this.props.user.id);
+        await this.props.loadContacts(this.props.user.id);
+        this.props.getActiveChat(this.props.id);
+
+    }
+
+    render() {
+        console.log(this.props.location);
+        return <StylesProvider>
+            <h1>Chat with { this.props.name }</h1>
+                    <div className="app__wrapper">
+                        {/* <MsgInput /> */}
+                        <ChatList />
+                        { this.props.name && <MessageList /> }
+                    </div>
+                </StylesProvider>;
+    }
 }
+
+const mapState = ({ userReducer }) => ({
+    user: userReducer.user
+  });
+  
+  const mapActions = dispatch => bindActionCreators({ loadUser, loadChats, loadContacts, loadMessages, getActiveChat }, dispatch);
+  
+  export default connect(mapState, mapActions)(Home);
