@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactDom from 'react-dom';
 import MessageList from '@containers/MessageList';
 import ChatList from '@containers/ChatList';
 import MsgInput from '@components/MsgInput';
@@ -21,18 +20,14 @@ class Home extends Component {
         await this.props.loadUser();
         await this.props.loadChats(this.props.user.id);
         await this.props.loadContacts(this.props.user.id);
-        this.props.getActiveChat(this.props.id);
-
     }
 
     render() {
-        console.log(this.props.location);
         return <StylesProvider>
             <h1>Chat with { this.props.name }</h1>
                     <div className="app__wrapper">
-                        {/* <MsgInput /> */}
-                        <ChatList />
-                        { this.props.name && <MessageList /> }
+                        <ChatList/>
+                        { this.props.name && <MessageList active={ this.props.id }/> }
                     </div>
                 </StylesProvider>;
     }

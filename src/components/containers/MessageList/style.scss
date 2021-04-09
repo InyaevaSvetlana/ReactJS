@@ -1,0 +1,26 @@
+.message-list {
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    &__messages {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+      height: 60vh;
+      overflow-y: auto;
+      border: 1px solid grey;
+      margin-bottom: 10px;
+    }
+    &__form {
+      display: flex;
+      justify-content: flex-end;
+      input {
+        flex-grow: 1;
+        margin-right: 15px;
+      }
+      button {
+        width: 100px
+      }
+    }
+  }
