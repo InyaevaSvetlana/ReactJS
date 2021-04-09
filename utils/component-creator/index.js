@@ -9,8 +9,9 @@ const args = minimist(process.argv.slice(2), {
     }
 });
 
-const componentName = args.name;
 
+const componentName = args.name;
+console.log(componentName);
 fs.mkdirSync(
     path.resolve(__dirname, '..', '..', 'src', 'components', componentName)
 );

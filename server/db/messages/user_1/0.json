@@ -1,12 +1,1 @@
-[
-    { 
-      "name": "one", 
-      "text": "Hey!", 
-      "date": "" 
-    },
-    { 
-      "name": "one", 
-      "text": "How are you?", 
-      "date": "" 
-    }
-  ]
+[{"name":"Username","text":"Hey!","date":""},{"name":"Username","text":"How are you?","date":""}]

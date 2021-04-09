@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-// import ReactDom from 'react-dom';
 
 import './style.scss';
 import Message from '@components/Message';
-//stateFull
-
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,7 +25,16 @@ class MessageList extends Component {
     };
 
     sendMessage = () => {
-        this.props.send('Username', this.state.text);
+        const user = this.props.user.user.id;
+        const chat = this.props.active;
+
+        const payload = {
+            name: 'Username',
+            text: this.state.text,
+            date: new Date()
+        };
+
+        this.props.send(payload, chat, user);
         
         this.setState({
             text: ''
@@ -36,18 +42,17 @@ class MessageList extends Component {
     };
 
     async componentDidMount() {
-        console.log(this.props);
-        await this.props.loadMessages(this.props.user.user.id, this.props.activeChat);
+        await this.props.loadMessages(this.props.user.user.id, this.props.active);
     };
 
     render() {
         const { messages } = this.props;
-        const Messages = messages.map((el, i) => 
+        const Messages = messages ? messages.map((el, i) => 
             <Message 
                 key={ 'msg_' + i } 
                 name={ el.name } 
                 text={ el.text }
-            />);
+            />) : <div></div> ;
         
         return <div className="message-list__wrapper">
             <div className="message-list__messages">

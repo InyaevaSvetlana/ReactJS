@@ -18,8 +18,6 @@ class Router extends Component {
       <Switch>
         <Route exact path="/" component = { Home } />
         { ChatsRoutes }
-        {}
-        {/* <Route exact path="/not-home" render = { () => <div>This is not your Home. Get out!</div> } /> */}
       </Switch>
     );
   }

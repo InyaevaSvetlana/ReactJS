@@ -1,5 +1,4 @@
 import update from 'react-addons-update';
-// import { FILTER_MSG } from '@actions/messages';
 
 const storeMessages = {
   messages: [],
@@ -14,8 +13,8 @@ export default (store = storeMessages, action) => {
       return store;
     }
 
-    case 'SEND_MSG': {
-      const msg = action.payload;
+    case 'SEND_MESSAGE_SUCCESS': {
+      const msg = action.payload.data;
       return update(store, { messages: { $push: [ msg ] } });
     }
 

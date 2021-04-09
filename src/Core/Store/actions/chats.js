@@ -21,6 +21,5 @@ export const loadChats = id => ({
 
 export const getActiveChat = url => ({
   type: 'GET_CHAT_ID',
-  // payload: { id: url ? url.replace(/\/.+\//i, '') : null }
-  payload: { id: url ? url : null }
+  payload: { id: url ? url.replace(/\/.+\//i, '') : null }
 });
