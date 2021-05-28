@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import ReactDom from 'react-dom';
 import MessageList from '@containers/MessageList';
 import ChatList from '@containers/ChatList';
 import MsgInput from '@components/MsgInput';

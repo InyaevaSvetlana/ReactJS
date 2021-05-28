@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+// import ReactDom from 'react-dom';
 
 import './style.scss';
 import Message from '@components/Message';
+
+
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -65,7 +68,7 @@ class MessageList extends Component {
                     onChange = { this.handleChange }
                     onKeyUp = { this.handleChange }
                 />
-                <button onClick={ this.sendMessage }>add</button>
+                <button onClick={ this.sendMessage }>Send</button>
             </div>
         </div>;
 

@@ -1,4 +1,5 @@
 
-        import component from './ContactsList.jsx';
-        export default component;
-    
+       import component from './ContactsList.jsx';
+
+       export default component;
+   

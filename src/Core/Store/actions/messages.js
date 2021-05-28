@@ -4,7 +4,6 @@ export const loadMessages = (user, chat) => ({
   [RSAA]: {
     endpoint: `/api/messages/?user=${user}&chat=${chat}`,
     method: 'GET',
-    // body: { id: 1 },
     types: [
       'LOAD_MESSAGES_REQUEST', 
       {
@@ -47,8 +46,3 @@ export const sendMessage = (reqBody, chat, user) => ({
     ]
   }
 });
-
-// export const filterMessages = (searchWord) => ({
-//   type: 'FILTER_MSG',
-//   searchWord
-// });

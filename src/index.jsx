@@ -18,10 +18,6 @@ ReactDom.render(
             <Router />
         </ConnectedRouter>
     </Provider>,
-    // <StylesProvider>
-    //     <div>
-    //         <App />
-    //     </div>
-    // </StylesProvider>,
+    
     container
 );
