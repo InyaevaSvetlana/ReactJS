@@ -21,7 +21,7 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: ["style-loader", "css-loader", "sass-loader"]
-              },
+            },
             {
                 test: /\.jsx?$/i,
                 exclude: /node_modules/,
@@ -33,12 +33,10 @@ module.exports = {
                             { "loose": true }
                         ]
                     ]
-                    // preset: ["@babel/preset-env", "@babel/preset-react"]
                 }
             }
         ]
     },
-
     resolve: {
         alias: {
             '@styles': path.resolve(__dirname, 'src', 'styles'),
@@ -49,10 +47,9 @@ module.exports = {
             '@func': path.resolve(__dirname, 'src', 'resources', 'functions'),
             '@lib': path.resolve(__dirname, 'src', 'resources', 'libraries'),
             '@actions': path.resolve(__dirname, 'src', 'core', 'store', 'actions'),
-            '@middleware': path.resolve(__dirname, 'src', 'core', 'middleware')
+            '@middleware': path.resolve(__dirname, 'src', 'core', 'middleware'),
         }
     },
-
     plugins: [
         new MiniCssExtractPlugin({
             filename: path.join('style', '[name].css'),

@@ -1,4 +1,5 @@
 import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
 export default function SimpleModal() {
@@ -14,7 +15,7 @@ export default function SimpleModal() {
   };
 
   const body = (
-    // <div style={modalStyle} className={classes.paper}>
+  
     <div>
       <h2 id="simple-modal-title">Text in a modal</h2>
       <p id="simple-modal-description">
@@ -39,4 +40,3 @@ export default function SimpleModal() {
     </div>
   );
 };
-    

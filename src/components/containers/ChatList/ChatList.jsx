@@ -28,7 +28,6 @@ class ChatList extends Component {
     }
 
     render() {
-        // const { activeChats } = this.state;
         const { chats } = this.props;
         const Chats = chats.map((el, i) => <li key={ i } className="chatlist-list__item">
             <Link to = {`/chat/${el.id}`} >{ el.name }</Link>

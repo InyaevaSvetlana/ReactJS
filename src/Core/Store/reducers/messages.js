@@ -18,6 +18,7 @@ export default (store = storeMessages, action) => {
       return update(store, { messages: { $push: [ msg ] } });
     }
 
+
     default: {
       return store;
     }
